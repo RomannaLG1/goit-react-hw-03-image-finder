@@ -13,10 +13,10 @@ export class Searchbar extends Component {
 
   schema = yup.object().shape({
     searchValue: yup.string().min(3).trim().required(),
-});
+  });
 
-  handleSubmit = (value, {resetForm}) => {
-   console.log(value);
+  handleSubmit = (value, { resetForm }) => {
+    console.log(value);
     this.props.onFormSubmit(value.searchValue.toLowerCase().trim());
     resetForm();
   };
@@ -24,18 +24,21 @@ export class Searchbar extends Component {
   render() {
     const { state, schema, handleSubmit } = this;
     return (
-         <Formik
-          initialValues={state}
-          validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
-      <header>
-     
+      <Formik
+        initialValues={state}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        <header>
           <Form>
             <button type="submit">
               <span>Search</span>
             </button>
-
+            <ErrorMessage
+              name="searchValue"
+              component={toast}
+              // render={msg => toast(<div>{msg}</div>)}
+            />
             <Field
               name="searchValue"
               // value={this.state.searchValue}
@@ -45,11 +48,8 @@ export class Searchbar extends Component {
               autoFocus
               placeholder="Search images and photos"
             />
-            <ErrorMessage name="searchValue" render={msg => toast(<div>{msg}</div>)} /> 
-            <ToastContainer/>
           </Form>
-        
-      </header>
+        </header>
       </Formik>
     );
   }
