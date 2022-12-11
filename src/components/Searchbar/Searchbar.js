@@ -34,7 +34,11 @@ export class Searchbar extends Component {
             <button type="submit">
               <span>Search</span>
             </button>
-
+            <ErrorMessage
+              name="searchValue"
+              component={toast}
+              // render={msg => toast(<div>{msg}</div>)}
+            />
             <Field
               name="searchValue"
               // value={this.state.searchValue}
