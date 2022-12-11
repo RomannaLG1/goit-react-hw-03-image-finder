@@ -8,7 +8,7 @@ export class ImageGallery extends Component {
     loading: false,
     error: null
   };
-  componentDidUpdate(pp, ps) {
+  componentDidUpdate(pp) {
     if (pp.searchImg !== this.props.searchImg) {
       this.setState({ loading: true, image: null });
       fetch(
@@ -22,7 +22,7 @@ export class ImageGallery extends Component {
   }
 
   render() {
-    const {image, loading, error} = this.state;
+    const {image, loading} = this.state;
  
     return (
       <>
