@@ -1,10 +1,12 @@
 // import PropTypes from 'prop-types';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 // import toast, { Toaster } from 'react-hot-toast';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Component } from 'react';
+import { FcSearch } from 'react-icons/fc';
 import * as yup from 'yup';
+import { Header, StyledForm, StyledBtn, StyledInput } from './Searchbar.styled';
 
 export class Searchbar extends Component {
   state = {
@@ -12,7 +14,7 @@ export class Searchbar extends Component {
   };
 
   schema = yup.object().shape({
-    searchValue: yup.string().min(3).trim().required(),
+    searchValue: yup.string().trim().required(),
   });
 
   handleSubmit = (value, { resetForm }) => {
@@ -29,20 +31,12 @@ export class Searchbar extends Component {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <header>
-          <Form>
-            <button type="submit">
-              <span>Search</span>
-            </button>
-            <ErrorMessage
+        <Header>
+          <StyledForm>
+            <StyledBtn type="submit"><FcSearch size={40}/></StyledBtn>
+
+            <StyledInput
               name="searchValue"
-              component={toast}
-              // render={msg => toast(<div>{msg}</div>)}
-            />
-            <Field
-              name="searchValue"
-              // value={this.state.searchValue}
-              // onChange={this.handleInputChange}
               type="text"
               // autoComplete="off"
               autoFocus
@@ -53,8 +47,8 @@ export class Searchbar extends Component {
               name="searchValue"
               render={msg => toast.error(<div>{msg}</div>)}
             />
-          </Form>
-        </header>
+          </StyledForm>
+        </Header>
       </Formik>
     );
   }
