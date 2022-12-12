@@ -50,10 +50,10 @@ export class App extends Component {
   render() {
     const { imageHits, totalImg, isLoading } = this.state;
     return (
-      <Box display="grid" pb='24px' gridTemplateColumns='1fr' gridGap='16px' >
+      <Box display="grid" pb="24px" gridTemplateColumns="1fr" gridGap="16px">
         <Searchbar onFormSubmit={this.handleFormSubmit} />
         {isLoading && <Loader />}
-        {totalImg === 0 && !isLoading && toast.error("Sorry, no images found")}
+        {totalImg === 0 && !isLoading && toast.error('Sorry, no images found')}
         {imageHits.length > 0 && (
           <>
             <ImageGallery
@@ -63,7 +63,7 @@ export class App extends Component {
             {imageHits.length < totalImg ? (
               <Button onClick={this.handleLoadMore} />
             ) : (
-              toast.info("Sorry, no more images found")
+              toast.info('Sorry, no more images found')
             )}
           </>
         )}

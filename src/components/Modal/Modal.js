@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Component } from 'react';
 import { ModalStyled, Overlay } from './Modal.styled';
@@ -34,3 +34,8 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propsTypes = {
+  src: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+};

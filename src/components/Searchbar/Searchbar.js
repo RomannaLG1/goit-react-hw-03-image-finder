@@ -1,6 +1,5 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
-// import toast, { Toaster } from 'react-hot-toast';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Component } from 'react';
@@ -33,7 +32,9 @@ export class Searchbar extends Component {
       >
         <Header>
           <StyledForm>
-            <StyledBtn type="submit"><FcSearch size={40}/></StyledBtn>
+            <StyledBtn type="submit">
+              <FcSearch size={40} />
+            </StyledBtn>
 
             <StyledInput
               name="searchValue"
@@ -53,3 +54,5 @@ export class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = { onSubmit: PropTypes.func };
